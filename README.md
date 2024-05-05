@@ -1,5 +1,7 @@
-# Stream API Java - Principais Métodos
+## Este é um desafio da Digital Innovation One (DIO)
+- Minha lista resolvida está aqui: https://github.com/gabrielroot/java-conhecendo-stream-api/blob/main/src/streamsChallenge/ChallengeConsole.java
 
+## Stream API Java - Principais Métodos
 Vamos praticar e aprofundar nossos conhecimentos na poderosa Stream API do Java!<br>
 Abaixo, apresentamos uma lista de desafios envolvendo operações com streams para exercitar suas habilidades e criatividade.
 
