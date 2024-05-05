@@ -1,9 +1,6 @@
 package streamsChallenge;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.IntStream;
 
 public class ChallengeConsole {
@@ -34,9 +31,29 @@ public class ChallengeConsole {
                 case 13: ChallengeConsole.filterNumbersInARange(numbers, 5, 10); break;
                 case 14: ChallengeConsole.findGreaterPrimeNumber(numbers); break;
                 case 15: ChallengeConsole.checkIfAtLeastOneNegative(numbers); break;
+                case 16: ChallengeConsole.groupPairAndOddNumbers(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void groupPairAndOddNumbers(List<Integer> numbers) {
+        HashMap<String, List<Integer>> groupedNumbers = new HashMap<>();
+        groupedNumbers.put("ODD", new ArrayList<>());
+        groupedNumbers.put("PAIR", new ArrayList<>());
+
+        numbers.forEach(number -> {
+            if (number % 2 == 0)
+                groupedNumbers.get("PAIR").add(number);
+            else
+                groupedNumbers.get("ODD").add(number);
+        });
+
+        System.out.println("Ímpares:");
+        ChallengeConsole.showFormatedNumbers(groupedNumbers.get("ODD"));
+
+        System.out.println("Pares:");
+        ChallengeConsole.showFormatedNumbers(groupedNumbers.get("PAIR"));
     }
 
     private static void checkIfAtLeastOneNegative(List<Integer> numbers) {
@@ -215,6 +232,7 @@ public class ChallengeConsole {
         System.out.println("= 13 - Filtrar por intervalo()               =");
         System.out.println("= 14 - Encontrar o maior número inteiro()    =");
         System.out.println("= 15 - Checar se há números negativos()      =");
+        System.out.println("= 16 - Agrupar ímpares e pares()             =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
