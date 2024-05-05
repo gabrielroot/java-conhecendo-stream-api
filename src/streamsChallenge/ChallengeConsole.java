@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class ChallengeConsole {
-    private static List<Integer> numbers = Arrays.asList(1, 4, 6, 8, 13);
+    private static List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 4, 3);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -33,9 +33,20 @@ public class ChallengeConsole {
                 case 12: ChallengeConsole.productOfNumbers(numbers); break;
                 case 13: ChallengeConsole.filterNumbersInARange(numbers, 5, 10); break;
                 case 14: ChallengeConsole.findGreaterPrimeNumber(numbers); break;
+                case 15: ChallengeConsole.checkIfAtLeastOneNegative(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void checkIfAtLeastOneNegative(List<Integer> numbers) {
+        boolean hasAtLeastOneNegative = numbers.stream()
+                .anyMatch(number -> number < 0);
+
+        if (hasAtLeastOneNegative)
+            System.out.println("Sim, há ao menos um número negativo!");
+        else
+            System.out.println("Não, não há números negativos na lista.");
     }
 
     private static void findGreaterPrimeNumber(List<Integer> numbers) {
@@ -203,6 +214,7 @@ public class ChallengeConsole {
         System.out.println("= 12 - Produto dos números()                 =");
         System.out.println("= 13 - Filtrar por intervalo()               =");
         System.out.println("= 14 - Encontrar o maior número inteiro()    =");
+        System.out.println("= 15 - Checar se há números negativos()      =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
