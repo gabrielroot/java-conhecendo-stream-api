@@ -2,11 +2,12 @@ package streamsChallenge;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.IntStream;
 
 public class ChallengeConsole {
-    private static List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 4, 3);
+    private static List<Integer> numbers = Arrays.asList(1, 4, 6, 8, 13);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -31,9 +32,22 @@ public class ChallengeConsole {
                 case 11: ChallengeConsole.sumOfSquare(numbers); break;
                 case 12: ChallengeConsole.productOfNumbers(numbers); break;
                 case 13: ChallengeConsole.filterNumbersInARange(numbers, 5, 10); break;
+                case 14: ChallengeConsole.findGreaterPrimeNumber(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void findGreaterPrimeNumber(List<Integer> numbers) {
+        Optional<Integer> greaterPrimeNumber = numbers.stream()
+            .filter(number -> number > 0 && IntStream.range(2, number - 1)
+                .allMatch(i -> number % i != 0))
+            .max(Integer::compare);
+
+        if (greaterPrimeNumber.isPresent())
+            System.out.printf("Maior número primo = %d\n", greaterPrimeNumber.get());
+        else
+            System.out.println("Não há números primos na lista.");
     }
 
     private static void filterNumbersInARange(List<Integer> numbers, int start, int end) {
@@ -188,6 +202,7 @@ public class ChallengeConsole {
         System.out.println("= 11 - Soma dos quadrados()                  =");
         System.out.println("= 12 - Produto dos números()                 =");
         System.out.println("= 13 - Filtrar por intervalo()               =");
+        System.out.println("= 14 - Encontrar o maior número inteiro()    =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
