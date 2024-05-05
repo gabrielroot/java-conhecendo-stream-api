@@ -32,9 +32,19 @@ public class ChallengeConsole {
                 case 14: ChallengeConsole.findGreaterPrimeNumber(numbers); break;
                 case 15: ChallengeConsole.checkIfAtLeastOneNegative(numbers); break;
                 case 16: ChallengeConsole.groupPairAndOddNumbers(numbers); break;
+                case 17: ChallengeConsole.filterAllPrimeNumbers(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void filterAllPrimeNumbers(List<Integer> numbers) {
+        List<Integer> primeNumbers = numbers.stream()
+                .filter(number -> number > 0 && IntStream.range(2, number - 1)
+                        .allMatch(i -> number % i != 0))
+                .toList();
+
+        ChallengeConsole.showFormatedNumbers(primeNumbers);
     }
 
     private static void groupPairAndOddNumbers(List<Integer> numbers) {
@@ -233,6 +243,7 @@ public class ChallengeConsole {
         System.out.println("= 14 - Encontrar o maior número inteiro()    =");
         System.out.println("= 15 - Checar se há números negativos()      =");
         System.out.println("= 16 - Agrupar ímpares e pares()             =");
+        System.out.println("= 17 - Filtrar os números primos()           =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
