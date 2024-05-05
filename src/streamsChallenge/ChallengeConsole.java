@@ -30,9 +30,18 @@ public class ChallengeConsole {
                 case 10: ChallengeConsole.groupedThreeOrFiveMultipleNumbers(numbers); break;
                 case 11: ChallengeConsole.sumOfSquare(numbers); break;
                 case 12: ChallengeConsole.productOfNumbers(numbers); break;
+                case 13: ChallengeConsole.filterNumbersInARange(numbers, 5, 10); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void filterNumbersInARange(List<Integer> numbers, int start, int end) {
+        List<Integer> filteredByRange = numbers.stream()
+            .filter(number -> number >= start && number <= end)
+            .toList();
+
+        ChallengeConsole.showFormatedNumbers(filteredByRange);
     }
 
     private static void productOfNumbers(List<Integer> numbers) {
@@ -178,6 +187,7 @@ public class ChallengeConsole {
         System.out.println("= 10 - Agrupar múltiplos de 3 ou 5()         =");
         System.out.println("= 11 - Soma dos quadrados()                  =");
         System.out.println("= 12 - Produto dos números()                 =");
+        System.out.println("= 13 - Filtrar por intervalo()               =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
