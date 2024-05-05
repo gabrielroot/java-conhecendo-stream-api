@@ -28,9 +28,17 @@ public class ChallengeConsole {
                 case 8: ChallengeConsole.sumAllDigits(numbers); break;
                 case 9: ChallengeConsole.checkIfAllAreDistinct(numbers); break;
                 case 10: ChallengeConsole.groupedThreeOrFiveMultipleNumbers(numbers); break;
+                case 11: ChallengeConsole.sumOfSquare(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void sumOfSquare(List<Integer> numbers) {
+        int sum = numbers.stream()
+            .reduce(0, (acc, number) -> acc + (number * number));
+
+        System.out.printf("Soma dos quadrados = %d\n", sum);
     }
 
     private static void groupedThreeOrFiveMultipleNumbers(List<Integer> numbers) {
@@ -160,6 +168,7 @@ public class ChallengeConsole {
         System.out.println("= 8 - Somar dígitos dos números()            =");
         System.out.println("= 9 - Checar se todos são distintos()        =");
         System.out.println("= 10 - Agrupar múltiplos de 3 ou 5()         =");
+        System.out.println("= 11 - Soma dos quadrados()                  =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
