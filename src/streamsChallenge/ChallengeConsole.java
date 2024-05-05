@@ -29,9 +29,17 @@ public class ChallengeConsole {
                 case 9: ChallengeConsole.checkIfAllAreDistinct(numbers); break;
                 case 10: ChallengeConsole.groupedThreeOrFiveMultipleNumbers(numbers); break;
                 case 11: ChallengeConsole.sumOfSquare(numbers); break;
+                case 12: ChallengeConsole.productOfNumbers(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void productOfNumbers(List<Integer> numbers) {
+        int product = numbers.stream()
+            .reduce(1, (acc, number) -> acc * number);
+
+        System.out.printf("Produto dos números = %d\n", product);
     }
 
     private static void sumOfSquare(List<Integer> numbers) {
@@ -169,6 +177,7 @@ public class ChallengeConsole {
         System.out.println("= 9 - Checar se todos são distintos()        =");
         System.out.println("= 10 - Agrupar múltiplos de 3 ou 5()         =");
         System.out.println("= 11 - Soma dos quadrados()                  =");
+        System.out.println("= 12 - Produto dos números()                 =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
