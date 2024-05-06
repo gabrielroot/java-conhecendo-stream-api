@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 public class ChallengeConsole {
-    private static List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 4, 3);
+    private static List<Integer> numbers = Arrays.asList(1, 1, 1, 1, 1);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -33,9 +33,20 @@ public class ChallengeConsole {
                 case 15: ChallengeConsole.checkIfAtLeastOneNegative(numbers); break;
                 case 16: ChallengeConsole.groupPairAndOddNumbers(numbers); break;
                 case 17: ChallengeConsole.filterAllPrimeNumbers(numbers); break;
+                case 18: ChallengeConsole.checkIfAllAreEquals(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void checkIfAllAreEquals(List<Integer> numbers) {
+        boolean areAllEquals = numbers.stream()
+                .allMatch(number -> Objects.equals(number, numbers.getFirst()));
+
+        if (areAllEquals)
+            System.out.println("Sim, todos os números são iguais!");
+        else
+            System.out.println("Não, nem todos o números são iguais.");
     }
 
     private static void filterAllPrimeNumbers(List<Integer> numbers) {
@@ -244,6 +255,7 @@ public class ChallengeConsole {
         System.out.println("= 15 - Checar se há números negativos()      =");
         System.out.println("= 16 - Agrupar ímpares e pares()             =");
         System.out.println("= 17 - Filtrar os números primos()           =");
+        System.out.println("= 18 - Checar se todos são iguais()          =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
