@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 public class ChallengeConsole {
-    private static List<Integer> numbers = Arrays.asList(1, 1, 1, 1, 1);
+    private static List<Integer> numbers = Arrays.asList(1, 30, 2, 3, 4, 5, 6, 7, 8, 9, 10, 5, 4, 3);
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -34,9 +34,18 @@ public class ChallengeConsole {
                 case 16: ChallengeConsole.groupPairAndOddNumbers(numbers); break;
                 case 17: ChallengeConsole.filterAllPrimeNumbers(numbers); break;
                 case 18: ChallengeConsole.checkIfAllAreEquals(numbers); break;
+                case 19: ChallengeConsole.sumOfDivisiblePerThreeOrFive(numbers); break;
                 default: System.out.println("Opção inválida."); break;
             }
         }
+    }
+
+    private static void sumOfDivisiblePerThreeOrFive(List<Integer> numbers) {
+        int sumOfDivisible = numbers.stream()
+                .filter(number -> number % 3 == 0 && number % 5 == 0)
+                .reduce(0, Integer::sum);
+
+        System.out.printf("Soma = %d\n", sumOfDivisible);
     }
 
     private static void checkIfAllAreEquals(List<Integer> numbers) {
@@ -256,6 +265,7 @@ public class ChallengeConsole {
         System.out.println("= 16 - Agrupar ímpares e pares()             =");
         System.out.println("= 17 - Filtrar os números primos()           =");
         System.out.println("= 18 - Checar se todos são iguais()          =");
+        System.out.println("= 19 - Soma de divisíveis por 3 e 5()       =");
         System.out.println("= 0 - Encerrar()                             =");
         System.out.println("==============================================");
     }
